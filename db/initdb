@@ -1,0 +1,4 @@
+docker cp db/drop.sql pg-test:/docker-entrypoint-initdb.d/drop.sql
+docker exec -it pg-test su postgres -c 'psql -U test -f /docker-entrypoint-initdb.d/drop.sql'
+docker cp db/migrations/001_init.sql pg-test:/docker-entrypoint-initdb.d/init.sql
+docker exec -it pg-test su postgres -c 'psql -U test -f /docker-entrypoint-initdb.d/init.sql'
